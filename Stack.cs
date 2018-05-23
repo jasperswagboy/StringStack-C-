@@ -9,7 +9,7 @@ namespace ConsoleApp
     class Stack
     {
 
-        public string[] stck { get; set; }
+        public string[] stck { get; private set; }
         private int tos;
 
         public Stack(uint size)
@@ -107,7 +107,13 @@ namespace ConsoleApp
         {
 
             foreach (string str in stck)
-                Console.Write(str + "\n");
+            {
+                if (str != "")
+                    Console.Write(str + "\n");
+                else
+                    break;
+            }
+
             Console.WriteLine();
         }
     }
