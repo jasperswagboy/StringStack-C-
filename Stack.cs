@@ -12,7 +12,7 @@ namespace ConsoleApp
         public string[] stck { get; set; }
         private int tos;
 
-        public Stack(int size)
+        public Stack(uint size)
         {
 
             stck = new string[size];
@@ -62,10 +62,38 @@ namespace ConsoleApp
                 Console.WriteLine(" -removed");
                 Console.ResetColor();
 
-                stck[tos - 1] = " ";
+                stck[tos - 1] = "";
                 tos--;
             }
 
+
+        }
+
+        public void deleteAll()
+        {
+
+            if (tos == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Stack is empty");
+                Console.ResetColor();
+
+                return;
+            }
+            else
+            {
+
+                for (int i = 0; i < stck.Length; i++)
+                {
+                    Console.Write(stck[tos - 1]);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(" -removed");
+                    Console.ResetColor();
+                    stck[tos - 1] = "";
+                    tos --;
+                }
+
+            }
 
         }
 
