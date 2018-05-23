@@ -87,7 +87,10 @@ namespace ConsoleApp
                 {
                     Console.Write(stck[i]);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(" -removed");
+
+                    if (stck[i] != "")
+                        Console.WriteLine(" -removed");
+                    
                     Console.ResetColor();
                     stck[i] = "";
                 }
@@ -100,7 +103,7 @@ namespace ConsoleApp
         {
 
             foreach (string str in stck)
-                Console.Write(str + " ");
+                Console.Write(str + "\n");
             Console.WriteLine();
         }
     }
