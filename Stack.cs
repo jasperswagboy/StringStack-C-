@@ -16,6 +16,10 @@ namespace ConsoleApp
         {
 
             stck = new string[size];
+
+            for (int i = 0; i < stck.Length; i++)
+                stck[i] = "";
+
             tos = 0;
         }
 
