@@ -139,7 +139,10 @@ namespace ConsoleApp
             foreach (string strr in stack.stck)
             {
                 if (strr != "")
-                    writer.Write(strr + "\n");
+                {
+                    writer.Write(strr);
+                    writer.WriteLine();
+                }
                 else
                     break;
             }
