@@ -138,7 +138,10 @@ namespace ConsoleApp
 
             foreach (string strr in stack.stck)
             {
-                writer.Write(strr + "\n");
+                if (strr != "")
+                    writer.Write(strr + "\n");
+                else
+                    break;
             }
             writer.Close();
 
