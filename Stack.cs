@@ -85,14 +85,13 @@ namespace ConsoleApp
 
                 for (int i = 0; i < stck.Length; i++)
                 {
-                    Console.Write(stck[tos - 1]);
+                    Console.Write(stck[i]);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(" -removed");
                     Console.ResetColor();
-                    stck[tos - 1] = "";
-                    tos --;
+                    stck[i] = "";
                 }
-
+                tos = 0;
             }
 
         }
