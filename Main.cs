@@ -113,6 +113,13 @@ namespace ConsoleApp
                             return 0;
                         }
 
+                    case "help":
+                        {
+
+                            help();
+                            break;
+                        }
+
                     default:
                         {
 
@@ -131,7 +138,7 @@ namespace ConsoleApp
 
             foreach (string strr in stack.stck)
             {
-                writer.Write(strr + " ");
+                writer.Write(strr + "\n");
             }
             writer.Close();
 
@@ -193,6 +200,12 @@ namespace ConsoleApp
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(" -unknown command");
             Console.ResetColor();
+        }
+
+        public static void help() {
+
+            Console.Clear();
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file\n\t: exit");
         }
 
     }
