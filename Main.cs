@@ -139,27 +139,38 @@ namespace ConsoleApp
 
         public static void create_file(Stack stack)
         {
-
-            FileStream file1 = new FileStream("C:\\new_file.txt", FileMode.Create);
-            StreamWriter writer = new StreamWriter(file1);
-
-            foreach (string strr in stack.stck)
+            try
             {
-                if (strr != "")
-                {
-                    writer.Write(strr);
-                    writer.WriteLine();
-                }
-                else
-                    break;
-            }
-            writer.Close();
+                FileStream file1 = new FileStream("C:\\new_file.txt", FileMode.Create);
+                StreamWriter writer = new StreamWriter(file1);
 
-            Console.Clear();
-            Console.Write("File was created in ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("C:\\new_file.txt");
-            Console.ResetColor();
+                foreach (string strr in stack.stck)
+                {
+                    if (strr != "")
+                    {
+                        writer.Write(strr);
+                        writer.WriteLine();
+                    }
+                    else
+                        break;
+                }
+                writer.Close();
+
+                Console.Clear();
+                Console.Write("File was created in ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("C:\\new_file.txt");
+                Console.ResetColor();
+                file1.Close();
+            }
+            catch {
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error");
+                Console.ResetColor();
+                return;
+            }
         }
 
         public static void create_file_link(Stack stack) {
@@ -255,7 +266,7 @@ namespace ConsoleApp
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
 
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: help\n\t: exit");
         }
 
         public static void add(string str, Stack stack)
@@ -307,7 +318,7 @@ namespace ConsoleApp
         public static void help() {
 
             Console.Clear();
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: help\n\t: exit");
         }
 
     }
