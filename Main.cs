@@ -107,6 +107,13 @@ namespace ConsoleApp
                             break;
                         }
 
+                    case "create_file_in":
+                        {
+
+                            create_file_link(stack);
+                            break;
+                        }
+
                     case "exit":
                         {
 
@@ -148,7 +155,96 @@ namespace ConsoleApp
             }
             writer.Close();
 
-            Console.WriteLine("File was created in C:\\new_file.txt");
+            Console.Clear();
+            Console.Write("File was created in ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("C:\\new_file.txt");
+            Console.ResetColor();
+        }
+
+        public static void create_file_link(Stack stack) {
+
+            bool next = true;
+            string link = "";
+
+            Console.WriteLine("Enter your link.Example - 'C:\\\\new_file.txt'");
+            Console.Write(": ");
+
+            do {
+
+                try
+                {
+                    link = Console.ReadLine();
+                    FileStream file1 = new FileStream(link, FileMode.Create);
+                    next = true;
+                    file1.Close();
+                }
+                catch (System.IO.DirectoryNotFoundException)
+                {
+
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Wrong link.");
+                    Console.ResetColor();
+                    next = false;
+                    return;
+
+                }
+                catch (System.UnauthorizedAccessException)
+                {
+
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("access denied");
+                    Console.ResetColor();
+                    return;
+                }
+                catch (System.IO.IOException)
+                {
+
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Error");
+                    Console.ResetColor();
+                    return;
+                }
+                catch { }
+
+                if (next) { break; }
+
+            } while (next);
+
+            try
+            {
+                FileStream file2 = new FileStream(link, FileMode.Create);
+                StreamWriter writer = new StreamWriter(file2);
+                foreach (string strr in stack.stck)
+                {
+                    if (strr != "")
+                    {
+                        writer.Write(strr);
+                        writer.WriteLine();
+                    }
+                    else
+                        break;
+                }
+                writer.Close();
+
+                Console.Clear();
+                Console.Write("File was created in ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(link);
+                Console.ResetColor();
+                file2.Close();
+            }
+            catch
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error");
+                Console.ResetColor();
+            }
+            
         }
 
         public static void start()
@@ -159,7 +255,7 @@ namespace ConsoleApp
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
 
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_link\n\t: exit");
         }
 
         public static void add(string str, Stack stack)
@@ -211,7 +307,7 @@ namespace ConsoleApp
         public static void help() {
 
             Console.Clear();
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_link\n\t: exit");
         }
 
     }
