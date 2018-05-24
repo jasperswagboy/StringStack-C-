@@ -255,7 +255,7 @@ namespace ConsoleApp
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
 
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_link\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: exit");
         }
 
         public static void add(string str, Stack stack)
@@ -307,7 +307,7 @@ namespace ConsoleApp
         public static void help() {
 
             Console.Clear();
-            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_link\n\t: exit");
+            Console.WriteLine("Commands:\n\t: add\n\t: delete \n\t: delete_all\n\t: clear\n\t: print\n\t: create_file \n\t: create_file_in\n\t: exit");
         }
 
     }
